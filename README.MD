@@ -10,7 +10,7 @@ The `direct-copy-extract-zip.sh` script is designed to enhance your workflow in 
 
 - **Automatic Zip Extraction:** If a selected item in the source pane is a `.zip` archive, the script will automatically extract its contents to a temporary location first, and then copy those extracted contents to your designated target folder.
 
-- **Bypassing Forklift's Activity UI:** Unlike Forklift's built-in copy operations, processes initiated by this script will **not** appear in Forklift's "Activities" pane. This provides a sense of instantaneous completion for successful transfers.
+- **Bypassing Forklift's Activity UI:** Unlike Forklift's built-in copy operations, processes initiated by this script will **not** appear in Forklift's "Activities" pane. This provides a sense of instantaneous completion for successful transfers and can run at the same time as other ForkLift acitivies are running (for example you have queued up some operations in Activities, but you need this to complete instantly and not at the end of the Activities list; keep in mind that if your current operation performed by this tools is a big/resource busy one, such as copying or extracting large files, especially to remote locations, it would still take the necessary time needed for it to complete, so the context of the term 'instant' needs to account for that!)
 
 ## Safety Information
 
@@ -55,9 +55,13 @@ Follow these steps to set up the script as a custom tool in Forklift:
 
    - In the "Tool Name" field, enter a descriptive name, for example: `Direct Copy & Extract`.
 
-   - For "Type," select **"Script."**
+   - For "Type," select **"Script."** (if asked, some ForkLift versions wouldn't ask)
 
-   - Click the **"Choose..."** button next to the "Script" field and navigate to select your `direct-copy-extract-zip.sh` file.
+   - Click the **"Choose..."** button next to the "Script" field and navigate to select your `direct-copy-extract-zip.sh` file, or if Scripts are not in the ForkLift UI paste in the path to your script file, for example:
+
+   ```
+   ~/Documents/ForkLift-Scripts/direct-copy-extract-zip.sh "$SOURCE_SELECTION_PATHS" "$TARGET_PATH"
+   ```
 
    - **Crucially, in the "Arguments" field, you must enter the following exactly as shown, including the double-quotes:**
 
@@ -65,6 +69,8 @@ Follow these steps to set up the script as a custom tool in Forklift:
      "$SOURCE_SELECTION_PATHS" "$TARGET_PATH"
 
      ```
+
+   - Enable the option **Enable for remote files** if you want to use this with networks shares etc.
 
    - Click **"Save."**
 
