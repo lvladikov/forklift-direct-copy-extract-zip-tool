@@ -26,7 +26,7 @@ Follow these steps to set up the script as a custom tool in Forklift:
 
 1. **Save the Script:**
 
-   - Copy the complete content of the `forklift-copy-zip-extract-tool` Canvas.
+   - Copy the complete content of the `forklift-direct-copy-extract-zip-tool`.
 
    - Open a plain text editor (e.g., TextEdit, VS Code, Sublime Text).
 
