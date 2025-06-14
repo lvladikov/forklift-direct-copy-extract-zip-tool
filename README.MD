@@ -72,6 +72,8 @@ Follow these steps to set up the script as a custom tool in ForkLift:
 
    - Enable the option **Enable for remote files** if you want to use this with networks shares etc.
 
+   - Enable the option **Run for every selected file** (available in ForkLift 4+ at the time of writing) if you want to use the script when multiple files are selected as source.
+
    - Click **"Save."**
 
 ## How to Use the Tool
