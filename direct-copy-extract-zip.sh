@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Forklift App Tool: Direct Copy & Extract Zip
+# ForkLift App Tool: Direct Copy & Extract Zip
 # This script directly copies selected files and folders to the target pane.
 # If a selected item is a .zip file, it extracts its contents to a temporary
 # location and then copies those extracted contents to the target.
 #
-# This tool is designed to bypass Forklift's internal activity tracking,
+# This tool is designed to bypass ForkLift's internal activity tracking,
 # meaning operations performed by this script will NOT appear in the
 # "Activities" list.
 #
@@ -15,10 +15,10 @@
 # It operates only on paths explicitly passed to it and does not interfere
 # with other system files or processes.
 #
-# Usage in Forklift Tools:
+# Usage in ForkLift Tools:
 # Set "Arguments" to: "$SOURCE_SELECTION_PATHS" "$TARGET_PATH"
 #
-# Parameters passed by Forklift:
+# Parameters passed by ForkLift:
 # $1: SOURCE_SELECTION_PATHS (space-separated list of absolute paths to selected files/folders)
 # $2: TARGET_PATH (absolute path of the directory open in the target pane)
 
@@ -35,10 +35,10 @@ trap 'for dir in "${TEMP_DIRS_TO_CLEANUP[@]}"; do rm -rf "$dir"; done' EXIT
 # Check if the correct number of arguments are provided.
 # This is crucial for the script to function as intended.
 if [ "$#" -ne 2 ]; then
-    echo "Error: Incorrect number of arguments provided by Forklift." >&2
+    echo "Error: Incorrect number of arguments provided by ForkLift." >&2
     echo "This script requires exactly 2 arguments (selected source paths and target path)." >&2
     echo "Please ensure you have items selected in the source pane AND a directory open in the target pane." >&2
-    echo "The issue may stem from how Forklift populates \$SOURCE_SELECTION_PATHS or \$TARGET_PATH for external scripts." >&2
+    echo "The issue may stem from how ForkLift populates \$SOURCE_SELECTION_PATHS or \$TARGET_PATH for external scripts." >&2
     exit 1
 fi
 
@@ -61,7 +61,7 @@ fi
 OLDIFS=$IFS
 # Set IFS to handle spaces in filenames correctly when iterating over SOURCE_SELECTION_PATHS_PARAM
 # This will split the single string argument into individual paths based on whitespace.
-IFS=$'\n' # Use newline as IFS to handle paths containing spaces, assuming Forklift separates with newlines or spaces.
+IFS=$'\n' # Use newline as IFS to handle paths containing spaces, assuming ForkLift separates with newlines or spaces.
 
 # Loop through each path provided in SOURCE_SELECTION_PATHS_PARAM.
 for SOURCE_ITEM in $SOURCE_SELECTION_PATHS_PARAM; do
@@ -116,7 +116,7 @@ for SOURCE_ITEM in $SOURCE_SELECTION_PATHS_PARAM; do
         fi
     else
         echo "Error: Source item '$SOURCE_ITEM' does not exist or is not directly accessible. Skipping." >&2
-        # This error likely indicates an issue with Forklift passing virtual paths
+        # This error likely indicates an issue with ForkLift passing virtual paths
         # or the selected item not being a real file system path.
         continue
     fi
