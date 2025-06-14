@@ -22,7 +22,7 @@
 # $1: SOURCE_SELECTION_PATHS (space-separated list of absolute paths to selected files/folders)
 # $2: TARGET_PATH (absolute path of the directory open in the target pane)
 
-# --- Script Start ---
+# Script Start
 
 # Trap to ensure temporary directories are cleaned up even if the script exits unexpectedly.
 # This mechanism guarantees that any temporary directories created by this script
@@ -106,7 +106,7 @@ for SOURCE_ITEM in $SOURCE_SELECTION_PATHS_PARAM; do
             fi
 
         else
-            # --- Handle copying of regular files/folders ---
+            # Handle copying of regular files/folders
             ditto "$SOURCE_ITEM" "$TARGET_PATH_PARAM"
             DITTO_STATUS=$?
             if [ "$DITTO_STATUS" -ne 0 ]; then
