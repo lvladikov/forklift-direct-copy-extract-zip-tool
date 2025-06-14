@@ -1,16 +1,16 @@
-# Forklift Direct Copy & Extract Tool
+# ForkLift Direct Copy & Extract Tool
 
-This file provides instructions for setting up and using a custom Bash script as a tool within Forklift (a dual-pane file manager for macOS). This tool allows you to perform direct file and folder copies, including extracting `.zip` archives, bypassing Forklift's default "Activities" progress UI.
+This file provides instructions for setting up and using a custom Bash script as a tool within ForkLift (a dual-pane file manager for macOS). This tool allows you to perform direct file and folder copies, including extracting `.zip` archives, bypassing ForkLift's default "Activities" progress UI.
 
 ## What the Script Does
 
-The `direct-copy-extract-zip.sh` script is designed to enhance your workflow in Forklift by:
+The `direct-copy-extract-zip.sh` script is designed to enhance your workflow in ForkLift by:
 
 - **Direct Copying:** It instantly copies selected files and folders from the source pane to the target pane using the macOS `ditto` command.
 
 - **Automatic Zip Extraction:** If a selected item in the source pane is a `.zip` archive, the script will automatically extract its contents to a temporary location first, and then copy those extracted contents to your designated target folder.
 
-- **Bypassing Forklift's Activity UI:** Unlike Forklift's built-in copy operations, processes initiated by this script will **not** appear in Forklift's "Activities" pane. This provides a sense of instantaneous completion for successful transfers and can run at the same time as other ForkLift acitivies are running (for example you have queued up some operations in Activities, but you need this to complete instantly and not at the end of the Activities list; keep in mind that if your current operation performed by this tools is a big/resource busy one, such as copying or extracting large files, especially to remote locations, it would still take the necessary time needed for it to complete, so the context of the term 'instant' needs to account for that!)
+- **Bypassing ForkLift's Activity UI:** Unlike ForkLift's built-in copy operations, processes initiated by this script will **not** appear in ForkLift's "Activities" pane. This provides a sense of instantaneous completion for successful transfers and can run at the same time as other ForkLift acitivies are running (for example you have queued up some operations in Activities, but you need this to complete instantly and not at the end of the Activities list; keep in mind that if your current operation performed by this tools is a big/resource busy one, such as copying or extracting large files, especially to remote locations, it would still take the necessary time needed for it to complete, so the context of the term 'instant' needs to account for that!)
 
 ## Safety Information
 
@@ -18,11 +18,11 @@ This script is designed with safety in mind, particularly concerning temporary f
 
 - **Temporary File Cleanup:** Whenever the script extracts a `.zip` file, it creates a unique, temporary directory using `mktemp -d`. A `trap` command is set at the beginning of the script to guarantee that all such temporary directories are automatically and securely removed (`rm -rf`) when the script finishes execution, whether successfully or due to an error. This prevents temporary files from accumulating and cluttering your system.
 
-- **Isolated Operation:** The script operates only on the paths explicitly passed to it by Forklift. It does not access or modify any other files or processes on your system, nor does it interfere with Forklift's internal operations or other temporary files created by other applications.
+- **Isolated Operation:** The script operates only on the paths explicitly passed to it by ForkLift. It does not access or modify any other files or processes on your system, nor does it interfere with ForkLift's internal operations or other temporary files created by other applications.
 
 ## Setup Instructions
 
-Follow these steps to set up the script as a custom tool in Forklift:
+Follow these steps to set up the script as a custom tool in ForkLift:
 
 1. **Save the Script:**
 
@@ -45,9 +45,9 @@ Follow these steps to set up the script as a custom tool in Forklift:
 
      ```
 
-3. **Add to Forklift as a Custom Tool:**
+3. **Add to ForkLift as a Custom Tool:**
 
-   - Open Forklift.
+   - Open ForkLift.
 
    - Go to the menu bar: **Commands > Manage Tools...**
 
@@ -78,29 +78,29 @@ Follow these steps to set up the script as a custom tool in Forklift:
 
 1. **Prepare Panes:**
 
-   - In one Forklift pane (your "source" pane), navigate to and select the file(s) or folder(s) you wish to copy.
+   - In one ForkLift pane (your "source" pane), navigate to and select the file(s) or folder(s) you wish to copy.
 
      - **For regular files/folders:** Simply select them.
 
      - **For `.zip` archives:** Select the `.zip` file itself. **Do NOT double-click into the `.zip` to browse its contents** if you want this tool to handle the extraction. This tool is designed to take the `.zip` file as its input.
 
-   - In the other Forklift pane (your "target" pane), navigate to and open the destination directory where you want the copied/extracted items to appear.
+   - In the other ForkLift pane (your "target" pane), navigate to and open the destination directory where you want the copied/extracted items to appear.
 
 2. **Run the Tool:**
 
-   - Go to the Forklift menu bar: **Commands > Direct Copy & Extract** (or whatever you named your tool).
+   - Go to the ForkLift menu bar: **Commands > Direct Copy & Extract** (or whatever you named your tool).
 
    - Alternatively, if you've added it to your toolbar, click its icon.
 
-The script will execute the copy/extraction in the background. You will not see a progress bar in Forklift's Activities pane. If an error occurs, a message will be displayed in Forklift's log or console output.
+The script will execute the copy/extraction in the background. You will not see a progress bar in ForkLift's Activities pane. If an error occurs, a message will be displayed in ForkLift's log or console output.
 
 ## Assigning a Keyboard Shortcut (e.g., CTRL+X)
 
 For even quicker access, you can assign a keyboard shortcut to your new tool:
 
-1. **Open Forklift Settings:**
+1. **Open ForkLift Settings:**
 
-   - Go to the Forklift menu bar: **Forklift > Settings...**
+   - Go to the ForkLift menu bar: **ForkLift > Settings...**
 
 2. **Navigate to Shortcuts:**
 
@@ -116,7 +116,7 @@ For even quicker access, you can assign a keyboard shortcut to your new tool:
 
    - Press the desired keyboard combination, e.g., **Control (⌃) + X**.
 
-   - Make sure this shortcut doesn't conflict with any existing Forklift shortcuts. If it does, Forklift might warn you or it might not work as expected. You may need to choose an alternative or modify the conflicting shortcut.
+   - Make sure this shortcut doesn't conflict with any existing ForkLift shortcuts. If it does, ForkLift might warn you or it might not work as expected. You may need to choose an alternative or modify the conflicting shortcut.
 
 5. **Close Settings:**
 
